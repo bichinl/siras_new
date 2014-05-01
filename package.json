@@ -1,0 +1,29 @@
+{
+  "name": "siras_new",
+  "version": "0.0.1",
+  "description": "Sistema SIRAS",
+  "main": "public/index.php",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bichinl/siras_new.git"
+  },
+  "keywords": [
+    "laravel",
+    "siras",
+    "sourcode.com.mx"
+  ],
+  "author": "Sam M de O",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bichinl/siras_new/issues"
+  },
+  "homepage": "https://github.com/bichinl/siras_new",
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^0.4.0",
+    "time-grunt": "^0.3.1",
+    "grunt-php": "^0.3.2",
+    "grunt-concurrent": "^0.5.0"
+  }
+}

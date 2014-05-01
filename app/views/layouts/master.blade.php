@@ -17,8 +17,6 @@
 		@yield('styles')
 
         {{ HTML::style("assets/css/style.css") }}
-
-        {{ HTML::script("assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js") }}
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -91,9 +89,7 @@
         </script>
 
         <script src="//cdnjs.cloudflare.com/ajax/libs/spin.js/2.0.0/spin.min.js"></script>
-
-        {{ HTML::script("bower_components/bootstrap/dist/js/bootstrap.min.css") }}
-		
+        		
 		@yield('scripts')
 
         {{ HTML::script("assets/js/main.js") }}

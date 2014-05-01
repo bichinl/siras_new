@@ -1,14 +1,13 @@
 @extends('layouts.master')
 
 @section('styles')
-	{{ HTML::style('assets/css/vendors/jquery.circliful.css') }}
-	{{ HTML::style('assets/css/samCalendar.css') }}
+	
 @stop
 
 @section('main-content')
 	<ol class="breadcrumb">
 		SIRAS
-		<li class="active"><i class="fa fa-home"></i> Home</li>
+		<li class="active"><i class="fa fa-home"></i> Some</li>
 	</ol>
 	
 	<div class="container" style="width:100%">
