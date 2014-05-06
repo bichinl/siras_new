@@ -7,7 +7,7 @@
 @section('main-content')
 	<ol class="breadcrumb">
 		SIRAS
-		<li class="active"><i class="fa fa-home"></i> Some</li>
+		<li class="active"><i class="fa fa-home"></i> Home</li>
 	</ol>
 	
 	<div class="container" style="width:100%">
@@ -73,9 +73,8 @@
 
 		<div class="row">
 			<div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
-				
+				<!-- GOOGLE MAPS WIDGET -->
 				<div id="googlemaps"></div>
-				
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 				<!-- WEATHER WIDGET -->
@@ -83,9 +82,6 @@
 
 				<!-- CALENDAR WIDGET -->
 				<div id="samcalendar"></div>
-				
-								
-
 			</div>
 		</div>
 
@@ -112,14 +108,48 @@
 	{{ HTML::script('assets/js/jquery.samWeather.js') }}
 
 	<!-- Google maps api -->
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;libraries=places"></script>
 
 	{{ HTML::script('assets/js/jquery.samGoogleAPI.js') }}
 	{{ HTML::script('assets/js/jquery.samCalendar.js') }}
 	<script type="text/javascript">
-		$('#googlemaps').samGoogleAPI();
+
+		var jsonObj = [];
+		var item = {};
+
+		//19.708092,-103.474388
+		//19.715768,-103.459271
+		/*item ["lat"] = 11;
+		item ["lon"] = -12;
+		jsonObj.push(item);
+
+		item ["lat"] = 22;
+		item ["lon"] = -23;
+		jsonObj.push(item);*/
+
+		var jsonObj = [];
+
+		jsonObj.push({
+		    lat: 19.708092,
+		    lon: -103.474388
+		});
+
+		jsonObj.push({
+		    lat: 19.715768,
+		    lon: -103.459271
+		});
+
+
+		$('#googlemaps').samGoogleAPI({
+			arr: jsonObj
+		});
+
 	    $('#samcalendar').samCalendar({
 	    	background: '#39464a'
 	    });
+
+	    console.log(document.getElementById('googlemaps'));
+
+	    console.log($('#googlemaps')[0]);
 	</script>
 @stop

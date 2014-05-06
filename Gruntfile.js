@@ -20,30 +20,11 @@ module.exports = function(grunt) {
         // Project settings
         config: config,
 
-
-
-        /*php: {
-            dev: {
-                options: {
-                    hostname: 'localhost',
-                    port: 8000,
-                    open: true,
-                    base: 'public',
-                    //livereload: '<%= connect.options.livereload %>'
-                },
-                watch: {
-                    options: {
-                        livereload: 45678
-                    },
-                }
-            }
-        },*/
-
         php: {
             options: {
                 hostname: 'localhost',
                 port: 8000,
-                //open: true,
+                // open: true,
                 base: 'public/',
                 keepalive: true
             },
@@ -56,24 +37,41 @@ module.exports = function(grunt) {
 
         watch: {
             js: {
-                files: ['<%= config.app %>/js/{,*/}*.js'],
+                files: ['<%= config.app %>/js/{,*/}*.js', ],
                 options: {
-                    livereload: true //35729
+                    livereload: true
                 }
             },
-            styles: {
+            sass: {
+                files: ['<%= config.app %>/sass/{,*/}*.scss'],
+                tasks: ['compass']
+            },
+            css: {
                 files: ['<%= config.app %>/css/{,*/}*.css'],
-                task: ['php:dev'],
                 options: {
-                    livereload: true //35729
+                    livereload: true
                 }
             },
-            views: {
-                files: ['public/index.php'],
+            laravel: {
+                files: [
+                    'app/views/**',
+                    'app/routes.php',
+                ],
                 options: {
-                    livereload: true //35729
+                    livereload: true
                 }
             },
+        },
+
+        compass: {
+            compile: {
+                options: {
+                    require: 'bootstrap-sass',
+                    sassDir: '<%= config.app %>/sass',
+                    cssDir: '<%= config.app %>/css',
+                    raw: 'output_style= :compressed\n'
+                }
+            }
         },
 
         concurrent: {
@@ -88,9 +86,11 @@ module.exports = function(grunt) {
 
     });
 
-
-    grunt.registerTask('default', [
-        'concurrent:target'
-    ]);
+    grunt.registerTask('default', function() {
+        grunt.task.run([
+            'compass',
+            'concurrent'
+        ]);
+    });
 
 };

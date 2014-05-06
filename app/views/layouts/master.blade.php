@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        {{ HTML::style("assets/css/bootstrap.min.css") }}
+        {{ HTML::style("assets/css/vendors/bootstrap.min.css") }}
        
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 	
@@ -88,6 +88,8 @@
         	window.jQuery || document.write('<script src="{{ URL::to("assets/js/vendor/jquery-1.11.0.min.js") }}"><\/script>');
         </script>
 
+		{{ HTML::script('assets/js/vendors/bootstrap.min.js') }}
+		
         <script src="//cdnjs.cloudflare.com/ajax/libs/spin.js/2.0.0/spin.min.js"></script>
         		
 		@yield('scripts')

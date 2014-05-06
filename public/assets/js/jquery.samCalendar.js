@@ -27,8 +27,6 @@
 
             $('#samCalendarWidget table',obj).append('<tbody></tbody>');
 
-            
-
 			createCalendar();
 
             function createCalendar(){
@@ -50,6 +48,9 @@
 				var count=0;
 				var calendarPos=0;
 				var elDia=1;
+
+				var tmp_fecha_hoy = now.getDate()+'-'+now.getMonth()+'-'+now.getFullYear();
+
 				while(diasPorCargar > 0){
 					if(count==0){
 						tmp_html+='<tr>';
@@ -59,7 +60,11 @@
 						tmp_html+='<td class="text-center"></td>';
 						calendarPos++;
 					}else{
-						tmp_html+='<td class="text-center">'+elDia+'</td>';
+						var tmp_otro_hoy = elDia+'-'+currentMonth+'-'+currentYear
+						if (tmp_fecha_hoy==tmp_otro_hoy)
+							tmp_html+='<td class="text-center"><p class="" style="background:white; color:'+settings.background+'"><strong>'+elDia+'</strong></p></td>';
+						else
+							tmp_html+='<td class="text-center"><p>'+elDia+'</p></td>';
 						elDia++;
 						diasPorCargar--;
 					}

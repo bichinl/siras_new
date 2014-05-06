@@ -1,0 +1,26 @@
+
+
+/* ARCHIVO CON LAS VARIABLES DE COLOR */
+@import "../variables";
+
+/* */
+$brand-primary: $color-rojo;
+
+$border-radius-base: 1px;
+
+/* BREADCRUMB */
+$breadcrumb-padding-vertical: 15px;
+$breadcrumb-bg: white;
+$breadcrumb-separator: "«";
+
+/* WELLS */
+$well-bg: white;
+
+/* FONT PATH */
+$icon-font-path: "/../fonts/" !default;
+
+/* FORM FOCUS BORDER */
+$input-border-focus: $color-rojo;
+
+
+@import "bootstrap";

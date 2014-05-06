@@ -1,33 +1,37 @@
-(function($){
-	
-	$.fn.samGoogleAPI = function(options){
-		
-		var settings = $.extend({
-			// tipo: 'small'
-		}, options);
+(function($) {
 
-		return this.each(function() {
-			var obj = $(this);
+    $.fn.samGoogleAPI = function(options) {
 
-			function sourcode_maps(id_obj, dir_lat, dir_logn) {
-			    var pos = new google.maps.LatLng(dir_lat, dir_logn);
-			    var mapOptions = {
-			        zoom: 13,
-			        center: pos,
-			        disableDefaultUI: false,
-			        scrollwheel: false,
-			        styles: [{
-			            "stylers": [{
-			                "hue": "#820000"
-			            }, {
-			                "gamma": 0
-			            }]
-			        }],
-			    };
+        var settings = $.extend({
+            // tipo: 'small'
+            arr: null
+        }, options);
 
-			    var map = new google.maps.Map(document.getElementById(id_obj), mapOptions);
+        return this.each(function() {
+            var obj = $(this);
 
-			    /*var marker = new google.maps.Marker({
+            console.log(settings.arr)
+
+
+            function sourcode_maps(dir_lat, dir_logn) {
+                var pos = new google.maps.LatLng(dir_lat, dir_logn);
+                var mapOptions = {
+                    zoom: 13,
+                    center: pos,
+                    disableDefaultUI: false,
+                    scrollwheel: false,
+                    styles: [{
+                        "stylers": [{
+                            "hue": "#820000"
+                        }, {
+                            "gamma": 0
+                        }]
+                    }],
+                };
+
+                var map = new google.maps.Map($(obj)[0], mapOptions);
+
+                /*var marker = new google.maps.Marker({
 			        map: map,
 			        position: pos,
 			        // animation: google.maps.Animation.DROP,
@@ -42,7 +46,7 @@
 			    });
 			    infowindow.open(map, marker);*/
 
-			    /*var addresses = [
+                /*var addresses = [
 			    	'Colon 290, Ciudad Guzman, Jalisco',
 			    	'Moctezuma 470, Ciudad Guzman, Jalisco',
 			    	'Nuñez 4, Ciudad Guzman, Jalisco',
@@ -61,19 +65,31 @@
 
 			        });
 			    }*/
-			}
 
-			var obj_id = $(obj).attr('id');
-			google.maps.event.addDomListener(window, 'load', function() {
-			    sourcode_maps(obj_id, 19.7, -103.466667);
-			});
+                $.each(settings.arr, function(i, item) {
+                    var myLatlng = new google.maps.LatLng(item.lat,item.lon);
+                    new google.maps.Marker({
+                        position: myLatlng,
+                        // animation: google.maps.Animation.DROP,
+                        map: map
+                    });
+                });
 
-			window.onresize = function() {
-			    sourcode_maps(obj_id, 19.7, -103.466667);
-			};
+             
 
-		});
+            }
 
-	}; /* FIN DEL PLUGIN */
+            var obj_id = $(obj).attr('id');
+            google.maps.event.addDomListener(window, 'load', function() {
+                sourcode_maps(19.7, -103.466667);
+            });
+
+            window.onresize = function() {
+                sourcode_maps(19.7, -103.466667);
+            };
+
+        });
+
+    }; /* FIN DEL PLUGIN */
 
 })(jQuery);
